@@ -260,6 +260,25 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+// Touch support
+canvas.addEventListener('touchstart', function (e) {
+  keydown = true;
+  const touch = e.touches[0];
+  const touchX = touch.clientX;
+
+  if (touchX < canvas.width / 2) {
+    playerDir = -1;
+    doodle.dx = -moveSpeed;
+  } else {
+    playerDir = 1;
+    doodle.dx = moveSpeed;
+  }
+});
+
+canvas.addEventListener('touchend', function () {
+  keydown = false;
+});
+
 document.addEventListener('keyup', () => keydown = false);
 
 // Buttons
